@@ -1,0 +1,19 @@
+{
+  "name": "poi-app",
+  "version": "0.0.1",
+  "private": true,
+  "description": "app for searching closest points of interest",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon --watch server --exec babel-node -- server/index.js"
+  },
+  "author": "mhmad.hamster@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.0",
+    "nodemon": "^1.11.0"
+  }
+}

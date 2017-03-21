@@ -5,7 +5,7 @@
   "description": "app for searching closest points of interest",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon --watch server --exec babel-node -- server/index.js",
+    "server": "nodemon --watch server --exec babel-node --presets es2015 server/index.js",
     "generate_db": "node db/index.js"
   },
   "author": "mhmad.hamster@gmail.com",

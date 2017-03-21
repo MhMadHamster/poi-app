@@ -1,11 +1,11 @@
-import path from 'path';
-import webpack from 'webpack';
+var path = require('path');
+var webpack = require('webpack');
 
-export default {
+module.exports = {
   devtool: 'eval',
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client',    
+    'webpack-hot-middleware/client',
     path.join(__dirname, '/client/index.js'),
   ],
   output: {

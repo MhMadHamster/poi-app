@@ -1,6 +1,10 @@
 import express from 'express';
 import path from 'path';
 
+import webpack from 'webpack';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackConfig from '../webpack.config.dev';
+
 import stations from './routes/stations';
 
 import mongoose from 'mongoose';
@@ -13,10 +17,10 @@ mongoose.connect('mongodb://localhost/poi_app')
 
 const app = express();
 
-app.use('/stations', stations);
+app.use(webpackMiddleware(webpack(webpackConfig)));
 
-app.get('/', (req, res) => {
-  res.send('Hello world');
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './index.html'));
 });
 
 app.listen(3000, () => console.log('Running on localhost:3000...'));

@@ -1,11 +1,11 @@
 var router = require('express').Router();
-var Station = require('../models/station');
+var POI = require('../models/poi');
 
-/* GET /stations */
+/* GET /POIs */
 router.get('/', function(req, res) {
-  Station.find(function(err, stations) {
+  POI.find(function(err, POIs) {
     if (!err) {
-      return res.json(stations);
+      return res.json(POIs);
     } else {
       res.statusCode = 500;
       console.log("Error: " + err.message);
@@ -16,9 +16,9 @@ router.get('/', function(req, res) {
   });
 });
 
-/* POST /stations */
+/* POST /POIs */
 router.post('/', function(req, res) {
-  Station.create(req.body, function(err, post) {
+  POI.create(req.body, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -31,9 +31,9 @@ router.post('/', function(req, res) {
   });
 });
 
-/* GET /stations/:id */
+/* GET /POIs/:id */
 router.get('/:id', function(req, res) {
-  Station.findById(req.params.id, function(err, post) {
+  POI.findById(req.params.id, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -46,9 +46,9 @@ router.get('/:id', function(req, res) {
   });
 });
 
-/* PUT /stations/:id */
+/* PUT /POIs/:id */
 router.put('/:id', function(req, res) {
-  Station.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+  POI.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -61,9 +61,9 @@ router.put('/:id', function(req, res) {
   });
 });
 
-/* DELETE /stations/:id */
+/* DELETE /POIs/:id */
 router.delete('/:id', function(req, res) {
-  Station.findByIdAndRemove(req.params.id, function(err, post) {
+  POI.findByIdAndRemove(req.params.id, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {

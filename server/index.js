@@ -3,6 +3,7 @@ import path from 'path';
 
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev';
 
 import stations from './routes/stations';
@@ -17,7 +18,16 @@ mongoose.connect('mongodb://localhost/poi_app')
 
 const app = express();
 
-app.use(webpackMiddleware(webpack(webpackConfig)));
+const compiler = webpack(webpackConfig);
+
+app.use(webpackMiddleware(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true,
+  },
+}));
+app.use(webpackHotMiddleware(compiler));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));

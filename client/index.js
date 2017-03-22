@@ -1,23 +1,23 @@
 import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import { AppContainer } from 'react-hot-loader';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Root from './components/Root';
+import configureStore from './configureStore';
+
+const store = configureStore();
 
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
-      <Router>
-        <Route path="/" component={App} />
-      </Router>
+      <Root store={store} />
     </AppContainer>,
-    document.getElementById('app')
+    document.getElementById('root')
   )
 }
 
-render(App);
+render(Root);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => { render(App) });
+  module.hot.accept('./components/Root', () => { render(Root) });
 }

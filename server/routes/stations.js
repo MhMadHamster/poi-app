@@ -3,7 +3,7 @@ var Station = require('../models/station');
 
 /* GET /stations */
 router.get('/', function(req, res) {
-  Station.find(function(err, stations) {
+  return Station.find(function(err, stations) {
     if (!err) {
       return res.json(stations);
     } else {
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 
 /* POST /stations */
 router.post('/', function(req, res) {
-  Station.create(req.body, function(err, post) {
+  return Station.create(req.body, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
 
 /* GET /stations/:id */
 router.get('/:id', function(req, res) {
-  Station.findById(req.params.id, function(err, post) {
+  return Station.findById(req.params.id, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -48,7 +48,7 @@ router.get('/:id', function(req, res) {
 
 /* PUT /stations/:id */
 router.put('/:id', function(req, res) {
-  Station.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+  return Station.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {
@@ -63,7 +63,7 @@ router.put('/:id', function(req, res) {
 
 /* DELETE /stations/:id */
 router.delete('/:id', function(req, res) {
-  Station.findByIdAndRemove(req.params.id, function(err, post) {
+  return Station.findByIdAndRemove(req.params.id, function(err, post) {
     if (!err) {
       return res.json(post);
     } else {

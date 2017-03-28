@@ -1,3 +1,5 @@
+import * as types from '../constants/ActionTypes';
+
 const initialState = {
   stations: [],
   stationsLoading: false,
@@ -5,18 +7,18 @@ const initialState = {
 
 function stationsReducer(state = initialState, action) {
   switch (action.type) {
-    case 'FETCH_STATIONS_PENDING':
+    case types.FETCH_STATIONS_REQUEST:
       return {
         ...state,
         stationsLoading: true,
       }
-    case 'FETCH_STATIONS_FULFILLED':
+    case types.FETCH_STATIONS_SUCCESS:
       return {
         ...state,
         stationsLoading: false,
-        stations: action.payload.data,
+        stations: action.payload,
       }
-    case 'FETCH_STATIONS_REJECTED':
+    case types.FETCH_STATIONS_FAILIRE:
       return {
         ...state,
         stationsLoading: false,

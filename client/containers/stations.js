@@ -6,9 +6,15 @@ const mapStateToProps = state => ({
   store: state,
 });
 
+const mapDispatchToProps = dispatch => ({
+  fetchStations() {
+    dispatch(fetchStations())
+  }
+})
+
 const AppContainer = connect(
   mapStateToProps,
-  { fetchStations },
+  mapDispatchToProps,
 )(App);
 
 export default AppContainer;

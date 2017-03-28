@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
-import promise from 'redux-promise-middleware';
+import thunk from 'redux-thunk';
 import stationsReducer from './reducers/reducers';
 
 const configureStore = () => {
@@ -8,8 +8,8 @@ const configureStore = () => {
   const store = createStore(
     stationsReducer,
     applyMiddleware(
+      thunk,
       logger,
-      promise(),
     ),
   )
 

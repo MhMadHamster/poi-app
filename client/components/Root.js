@@ -1,13 +1,17 @@
 import 'react-hot-loader/patch';
 import React, { PropTypes } from 'react';
 import AppContainer from '../containers/stations';
+import Station from './Station';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <Route path="/" component={ AppContainer } />
+      <div>
+        <Route exact path="/" component={ AppContainer } />
+        <Route path="/station/:stationId" component={ Station } />
+      </div>
     </Router>
   </Provider>
 )

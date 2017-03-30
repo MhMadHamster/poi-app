@@ -17,7 +17,7 @@ const fetchStationsFailure = err => ({
 
 export const fetchStations = () => (dispatch) => {
   dispatch(fetchStationsRequest());
-  return fetch('/stations')
+  return fetch('/api/stations')
     .then(res => res.json())
     .then(json => dispatch(fetchStationsSuccess(json)))
     .catch(err => dispatch(fetchStationsFailure(err.message)));

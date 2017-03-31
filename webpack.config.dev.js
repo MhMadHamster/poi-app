@@ -6,11 +6,12 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    path.join(__dirname, '/client/index.js'),
+    path.join(__dirname, '/app/index.js'),
   ],
   output: {
     filename: 'bundle.js',
     path: '/dist',
+    publicPath: '/dist',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -20,7 +21,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: path.join(__dirname, 'client'),
+        include: path.join(__dirname, 'app'),
+        exclude: path.join(__dirname, 'app/server'),
         loader: 'babel-loader',
       }
     ]
